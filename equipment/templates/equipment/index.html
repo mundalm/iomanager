@@ -1,8 +1,18 @@
 <!--Loads all static content-->
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'equipment/style.css' %}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-{% if all_equipment %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'equipment:index' %}">IOmgr</a>
+        </div>
+    </div>
+</nav>
+
+{% if all_equipment %} 
     <h3>Registrert utstyr:</h3>
     <ul>
         {% for equipment in all_equipment %}
