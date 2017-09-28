@@ -1,0 +1,15 @@
+<!--Loads all static content-->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'equipment/style.css' %}" />
+
+{% if all_equipment %}
+    <h3>Registrert utstyr:</h3>
+    <ul>
+        {% for equipment in all_equipment %}
+        <li><a href="{% url 'equipment:detail' equipment.id  %}">{{ equipment.name }} - {{ equipment.id }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>You dont have any Equipment registered!</h3>
+{% endif %}
+        

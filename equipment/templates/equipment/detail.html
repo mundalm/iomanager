@@ -1,0 +1,19 @@
+<H1>{{equipment.name}}</H1>
+
+{% if error_message %}
+    <p style="color: red"><strong>{{ error_message }}</strong></strig></p>
+{% endif %}
+
+<form action="{% url 'equipment:tested' equipment.id %}" method="POST">
+    {% csrf_token %}
+    {% for feature in equipment.feature_set.all  %}
+        <input type="radio" id="feature{{forloop.counter}}" name="feature" value="{{ feature.id }}" />
+        <label for="feature{{forloop.counter}}">
+            {{ feature.name }}
+            {% if feature.is_tested %}
+                X
+            {% endif %}
+        </label><br>
+    {% endfor %}
+    <input type="submit" value="Testet">
+</form>
