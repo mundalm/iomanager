@@ -1,7 +1,11 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Equipment(models.Model):
     name = models.CharField(max_length=100)
+
+    def get_absolute_url(self):
+        return reverse('equipment/detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
