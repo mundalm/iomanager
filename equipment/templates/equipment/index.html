@@ -5,7 +5,18 @@
         <h3>Registrert utstyr:</h3>
         <ul>
             {% for equipment in all_equipment %}
-            <li><a href="{% url 'equipment:equipment-detail' equipment.id  %}">{{ equipment.name }} - {{ equipment.id }}</a></li>
+            <li>
+                <div><a href="{% url 'equipment:equipment-detail' equipment.id  %}">{{ equipment.name }} - {{ equipment.id }}</a></div>
+                <div>
+                    <form action="{% url 'equipment:equipment-delete' equipment.id %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="equipment_id" value="{{ equipment.id }}"/>
+                        <button type="submit" value="Slett" class="btn btn-danger btn-sm">
+                            Slett
+                        </button>
+                    </form> 
+                </div>
+            </li>
             {% endfor %}
         </ul>
     {% else %}

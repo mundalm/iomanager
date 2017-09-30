@@ -17,6 +17,9 @@ urlpatterns = [
      # /equipment/add/
     url(r'equipment/add/$', views.EquipmentCreate.as_view(), name='equipment-add'),
 
-    # /equipment/<equipment_id>/tested 
-    #url(r'^(?P<equipment_id>[0-9]+)/tested/$', views.tested, name='tested'),
+    # /equipment/2/
+    url(r'equipment/(?P<pk>[0-9]+)/$', views.EquipmentUpdate.as_view(), name='equipment-update'),
+
+     # /equipment/2/delete
+    url(r'equipment/(?P<pk>[0-9]+)/delete/$', views.EquipmentDelete.as_view(), name='equipment-delete')
 ]
