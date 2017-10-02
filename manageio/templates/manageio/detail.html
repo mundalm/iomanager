@@ -1,11 +1,25 @@
 {% extends "manageio/base.html" %}
 {% block title %}Utstyrsdetaljer{% endblock %}
 {% block body %}
-    <H1>{{equipment.name}}</H1>
-
     {% if error_message %}
         <p style="color: red"><strong>{{ error_message }}</strong></strig></p>
     {% endif %}
+    <br/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card border-dark mb-3" style="max-width: 60rem;">
+                    <div class="card-header">Utstyrsdata</div>
+                    <div class="card-body text-dark">
+                        <h4 class="card-title">{{equipment.tfmPrefix}}{{equipment.tag}}</h4>
+                        <p class="card-text">{{equipment.docString}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 
     {% csrf_token %}
     {% for feature in equipment.feature_set.all  %}

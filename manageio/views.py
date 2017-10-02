@@ -16,11 +16,11 @@ class DetailView(generic.DetailView):
 
 class EquipmentCreate(CreateView):
     model = Equipment
-    fields = ['name']
+    fields = ['name', 'tag', 'tfmPrefix', 'docString' ]
 
 class EquipmentUpdate(UpdateView):
     model = Equipment
-    fields = ['name']
+    fields = ['name', 'tag', 'tfmPrefix', 'docString' ]
 
 class EquipmentDelete(DeleteView):
     model = Equipment
