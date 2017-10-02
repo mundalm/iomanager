@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from .models import Equipment
 
 class IndexView(generic.ListView):
-    template_name='equipment/index.html'
+    template_name='manageio/index.html'
     context_object_name='all_equipment'
 
     def get_queryset(self):
@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Equipment
-    template_name = 'equipment/detail.html'
+    template_name = 'manageio/detail.html'
 
 class EquipmentCreate(CreateView):
     model = Equipment
@@ -24,5 +24,5 @@ class EquipmentUpdate(UpdateView):
 
 class EquipmentDelete(DeleteView):
     model = Equipment
-    success_url = reverse_lazy('equipment:index')
+    success_url = reverse_lazy('manageio:index')
 

@@ -5,7 +5,7 @@ class Equipment(models.Model):
     name = models.CharField(max_length=100)
 
     def get_absolute_url(self):
-        return reverse('equipment:equipment-detail', kwargs={'pk': self.pk})
+        return reverse('manageio:equipment-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
