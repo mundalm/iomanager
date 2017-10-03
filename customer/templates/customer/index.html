@@ -1,29 +1,29 @@
 {% extends "base.html" %}
-{% block title %}IOManager{% endblock %}
+{% block title %}Customers{% endblock %}
 {% block body %}
     <section>
-        {% if all_equipment %}
+        {% if all_customers %}
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <br/>
-                        <h3>Registrert utstyr</h3>
+                        <h3>Registrerte kunder</h3>
                         <br/>
                     </div>
                 </div>
-                {% for equipment in all_equipment %}
+                {% for customer in all_customers %}
                     <div class="row">
                         <div class="col-4">
-                            <a href="{% url 'manageio:equipment-detail' equipment.id  %}">{{ equipment.name }} - {{ equipment.id }}</a>
+                            <a href="{% url 'customer:customer-detail' customer.id  %}">{{ customer.name }} - {{ customer.id }}</a>
                         </div>
-                        <div class="col-1">
+                        <!--<div class="col-1">
                             <form action="{% url 'manageio:equipment-delete' equipment.id %}" method="POST" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="equipment_id" value="{{ equipment.id }}"/>
                                 <button type="submit" value="Slett" class="btn btn-danger btn-sm">Slett</button>
                             </form> 
                             <a class="btn btn-dark btn-sm" href="{% url 'manageio:equipment-update' equipment.id %}" role="button">Rediger</a> 
-                        </div>
+                        </div>-->
                     </div>
                     <div class="row">
                         <div class="col-5">
@@ -36,7 +36,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3>You dont have any Equipment registered!</h3>
+                        <h3>You dont have any customers registered!</h3>
                     </div>
                 </div>
             </div>
