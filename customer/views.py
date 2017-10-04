@@ -9,3 +9,19 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Customer.objects.all()
+
+class DetailView(generic.DetailView):
+    model = Customer
+    template_name = 'customer/detail.html'
+
+class CustomerCreate(CreateView):
+    model = Customer
+    fields = ['name', 'docString' ]
+
+class CustomerUpdate(UpdateView):
+    model = Customer
+    fields = ['name', 'docString' ]
+
+class CustomerDelete(DeleteView):
+    model = Customer
+    success_url = reverse_lazy('customer:index')
