@@ -9,3 +9,23 @@ body{
 .cellpad {
     padding-right: 10px;
 }
+
+.headercol {
+    background-color: #3D3D3D;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-right: 0.1em;
+    font-style: bold;
+    font-size: 1em;
+}
+
+.cointainermargin {
+    margin-left: 10px;
+}
+
+.formNoNewLine {
+    display:inline;
+    margin:0px;
+    padding:0px;
+}

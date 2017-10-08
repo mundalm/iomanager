@@ -3,38 +3,42 @@
 {% block body %}
     <section>
         {% if all_customers %}
-            <div class="container-fluid">
+            <div class="container-fluid cointainermargin">
+                <div class="row headerrow"><br/></div>
+                            
                 <div class="row">
                     <div class="col-12">
-                        <br/>
-                        <h3>Registrerte kunder</h3>
-                        <br/>
+                      Menu
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 headercol">
+                        Kunde
+                    </div>
+                    <div class="col-1 headercol">
+                        Rediger
                     </div>
                 </div>
 
-                        {% for customer in all_customers %}
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">{{customer.name}}</h6>
-                                            
-                                            <div class="pull-right">
-                                            <a href="{% url 'customer:customer-detail' customer.id  %}">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="{% url 'customer:customer-detail' customer.id  %}">
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="{% url 'customer:customer-detail' customer.id  %}">
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
+                {% for customer in all_customers %}
+                    <div class="row">
+                        <div class="col-4">{{customer.name}}</div>
+                        <div class="col-1">
+                            <a href="{% url 'customer:customer-detail' customer.id  %}" title="Vis kundedetaljer">
+                                <i class="fa fa-vcard-o fa-lg" aria-hidden="true"></i>
+                            </a>
+                            <form method="POST" class="formNoNewLine" id="deleteform" action="{% url 'customer:customer-delete' customer.id %}">
+                                {% csrf_token %}
+                                <a href="javascript:{}" onclick="document.getElementById('deleteform').submit(); return false;">
+                                    <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                                </a>
+                            </form>                            
+                            <a href="{% url 'customer:customer-update' customer.id  %}" title="Rediger kunde">
+                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
                     
                 
             </div>
